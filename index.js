@@ -1,10 +1,15 @@
 import http from 'http';
 import fs from 'fs';
 import url from 'url';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 http
   .createServer((req, res) => {
     const q = url.parse(req.url, true);
+
+    console.log(`Music: ${process.env.MUSIC_URL}`);
 
     let filename =
       !q.pathname || q.pathname == '/'
